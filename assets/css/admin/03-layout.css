@@ -1,0 +1,79 @@
+/*
+|--------------------------------------------------------------------------
+| Layout
+|--------------------------------------------------------------------------
+*/
+
+.pag-dashboard{
+
+    max-width:1500px;
+
+    margin:20px auto;
+
+}
+
+.pag-dashboard-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:30px;
+
+}
+
+.pag-dashboard-title{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+}
+
+.pag-title{
+
+    font-size:34px;
+
+    font-weight:800;
+
+    letter-spacing:-.8px;
+
+}
+
+.pag-subtitle{
+
+    font-size:15px;
+
+    color:var(--pag-text-light);
+
+}
+
+.pag-section{
+
+    margin-top:28px;
+
+}
+
+.pag-grid{
+
+    display:grid;
+
+    grid-template-columns:2fr 1fr;
+
+    gap:28px;
+
+}
+
+.pag-column{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:28px;
+
+}

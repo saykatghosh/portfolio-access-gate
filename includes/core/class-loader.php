@@ -120,6 +120,24 @@ class PAG_Loader {
 			'pag-tools',
 			array( $this, 'coming_soon' )
 		);
+		add_submenu_page(
+
+	null,
+
+	'View Lead',
+
+	'View Lead',
+
+	'manage_options',
+
+	'pag-view-lead',
+
+	array(
+		$this,
+		'view_lead'
+	)
+
+);
 
 	}
 
@@ -156,5 +174,12 @@ class PAG_Loader {
 		echo '<div class="wrap"><h1>Coming Soon</h1><p>Under Development</p></div>';
 
 	}
+	public function view_lead() {
+
+	$page = new PAG_View_Lead();
+
+	$page->render();
+
+}
 
 }

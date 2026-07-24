@@ -1,0 +1,133 @@
+/* ===========================
+   Table
+=========================== */
+
+.pag-table{
+
+	width:100%;
+
+	border-collapse:separate;
+
+	border-spacing:0 12px;
+
+}
+
+.pag-table thead th{
+
+	padding:0 18px 14px;
+
+	font-size:12px;
+
+	font-weight:700;
+
+	text-transform:uppercase;
+
+	letter-spacing:.08em;
+
+	color:#94A3B8;
+
+}
+
+.pag-table tbody tr{
+
+	background:#fff;
+
+	border-radius:16px;
+
+	box-shadow:0 8px 24px rgba(15,23,42,.05);
+
+	transition:.2s;
+
+}
+
+.pag-table tbody tr:hover{
+
+	transform:translateY(-2px);
+
+	box-shadow:0 14px 32px rgba(15,23,42,.08);
+
+}
+
+.pag-table td{
+
+	padding:18px;
+
+	vertical-align:middle;
+
+}
+
+.pag-table .button{
+
+	border-radius:999px;
+
+	padding:6px 16px;
+
+	font-size:13px;
+
+	font-weight:600;
+
+}
+
+/* ===========================
+   Premium Table Header
+=========================== */
+
+.pag-table thead th{
+
+    color:#5F6C8C;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    text-transform:uppercase;
+
+    letter-spacing:.08em;
+
+}
+
+/* ===========================
+   Row Hover
+=========================== */
+
+.pag-table tbody tr{
+
+    transition:.25s;
+
+}
+
+.pag-table tbody tr:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 8px 22px rgba(50,50,93,.08);
+
+}
+
+/* ===========================
+   View Button
+=========================== */
+
+.pag-table .button{
+
+    background:#F4F6FF;
+
+    border:none;
+
+    color:#5B5FEF;
+
+    border-radius:10px;
+
+    font-weight:600;
+
+    transition:.25s;
+
+}
+
+.pag-table .button:hover{
+
+    background:#5B5FEF;
+
+    color:#fff;
+
+}

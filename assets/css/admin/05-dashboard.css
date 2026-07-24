@@ -1,0 +1,559 @@
+/*
+|--------------------------------------------------------------------------
+| Portfolio Access Gate
+| Dashboard
+|--------------------------------------------------------------------------
+*/
+
+/* ==========================================================
+   Dashboard Header
+========================================================== */
+
+.pag-dashboard-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:34px;
+
+    padding:34px 36px;
+
+	min-height:170px;
+
+    border-radius:24px;
+
+    background:linear-gradient(
+        135deg,
+        #4F46E5 0%,
+        #6366F1 100%
+    );
+
+    color:#fff;
+
+    overflow:hidden;
+
+    position:relative;
+
+}
+
+.pag-dashboard-header::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:420px;
+
+    height:420px;
+
+    right:-160px;
+
+    top:-180px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.08);
+
+}
+
+.pag-dashboard-header::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:240px;
+
+    height:240px;
+
+    left:-100px;
+
+    bottom:-120px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.06);
+
+}
+
+.pag-dashboard-title{
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+.pag-title{
+
+	font-size:48px;
+
+	font-weight:800;
+
+	letter-spacing:-1px;
+
+	margin-bottom:10px;
+
+	color: #fff !important;;
+
+}
+
+.pag-subtitle{
+
+	font-size:16px;
+
+	line-height:1.7;
+
+	max-width:520px;
+
+	color:rgba(255,255,255,.82)!important;
+
+}
+
+/* ==========================================================
+   Header Actions
+========================================================== */
+
+.pag-header-actions{
+
+    position:relative;
+
+    z-index:2;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+}
+
+/* ==========================================================
+   KPI Cards
+========================================================== */
+
+.pag-dashboard-cards{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,minmax(0,1fr));
+
+    gap:24px;
+
+    margin-top:-38px;
+
+	position:relative;
+
+	z-index:20;
+
+}
+
+.pag-card{
+
+	position:relative;
+
+	display:flex;
+
+	align-items:center;
+
+	gap:20px;
+
+	padding:26px;
+
+	border-radius:22px;
+
+	background:#fff;
+
+	border:1px solid #eef2f7;
+
+	box-shadow:0 12px 35px rgba(15,23,42,.06);
+
+	overflow:hidden;
+
+	transition:all .25s ease;
+
+}
+
+.pag-card:hover{
+
+	transform:translateY(-6px);
+
+	box-shadow:0 24px 60px rgba(15,23,42,.10);
+
+}
+
+.pag-card::before{
+
+	content:"";
+
+	position:absolute;
+
+	top:0;
+
+	left:0;
+
+	width:100%;
+
+	height:4px;
+
+	background:#4F46E5;
+
+}
+
+.pag-card-success::before{
+
+	background:#22C55E;
+
+}
+
+.pag-card-info::before{
+
+	background:#0EA5E9;
+
+}
+
+.pag-card-warning::before{
+
+	background:#F59E0B;
+
+}
+
+.pag-card:hover{
+
+    transform:translateY(-4px);
+
+}
+
+.pag-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+        135deg,
+        rgba(79,70,229,.03),
+        transparent
+    );
+
+}
+
+.pag-card-icon{
+
+    width:58px;
+
+    height:58px;
+
+    border-radius:16px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:#EEF2FF;
+
+    font-size:24px;
+
+    margin-bottom:20px;
+
+}
+
+.pag-card-content span{
+
+    display:block;
+
+    font-size:14px;
+
+    color:var(--pag-text-light);
+
+    margin-bottom:8px;
+
+}
+
+.pag-card-content h2{
+
+    font-size:34px;
+
+    font-weight:800;
+
+    letter-spacing:-1px;
+
+}
+
+/* ==========================================================
+   Chart
+========================================================== */
+
+.pag-chart{
+
+    background:var(--pag-card);
+
+    border-radius:22px;
+
+    padding:30px;
+
+    border:1px solid var(--pag-border);
+
+    box-shadow:var(--pag-shadow);
+
+}
+
+.pag-card-value{
+
+	font-size:42px;
+
+	font-weight:800;
+
+	line-height:1;
+
+	margin-top:4px;
+
+	letter-spacing:-1px;
+
+}
+
+.pag-card-label{
+
+	font-size:15px;
+
+	font-weight:500;
+
+	color:#6B7280;
+
+}
+
+/*
+|--------------------------------------------------------------------------
+| Header Extras
+|--------------------------------------------------------------------------
+*/
+
+.pag-overline{
+
+    display:inline-block;
+
+    margin-bottom:12px;
+
+    padding:6px 12px;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,.15);
+
+    color:#fff;
+
+    font-size:11px;
+
+    font-weight:700;
+
+    letter-spacing:1.5px;
+
+}
+
+.pag-theme-toggle{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    background:rgba(255,255,255,.15);
+
+    border:none;
+
+    padding:10px 16px;
+
+    border-radius:999px;
+
+    color:#fff;
+
+    cursor:pointer;
+
+    backdrop-filter:blur(12px);
+
+}
+
+.pag-theme-switch{
+
+    width:46px;
+
+    height:24px;
+
+    background:rgba(255,255,255,.25);
+
+    border-radius:999px;
+
+    position:relative;
+
+}
+
+.pag-theme-thumb{
+
+    width:18px;
+
+    height:18px;
+
+    background:#fff;
+
+    border-radius:50%;
+
+    position:absolute;
+
+    top:3px;
+
+    left:3px;
+
+}
+
+/*
+|--------------------------------------------------------------------------
+| Premium Card Icons
+|--------------------------------------------------------------------------
+*/
+
+.pag-card-icon{
+
+	width:64px;
+	height:64px;
+
+	border-radius:18px;
+
+	display:flex;
+	align-items:center;
+	justify-content:center;
+
+	background:#EEF2FF;
+
+	color:var(--pag-primary);
+
+	box-shadow:0 8px 18px rgba(79,70,229,.10);
+
+	flex-shrink:0;
+
+}
+
+.pag-card-icon svg{
+
+	width:28px;
+	height:28px;
+
+	stroke:currentColor;
+
+}
+
+.pag-card-primary .pag-card-icon{
+
+	background:#EEF2FF;
+	color:#4F46E5;
+
+}
+
+.pag-card-success .pag-card-icon{
+
+	background:#ECFDF5;
+	color:#16A34A;
+
+}
+
+.pag-card-info .pag-card-icon{
+
+	background:#EFF6FF;
+	color:#2563EB;
+
+}
+
+.pag-card-warning .pag-card-icon{
+
+	background:#FFF7ED;
+	color:#EA580C;
+
+}
+
+/*
+|--------------------------------------------------------------------------
+| Search
+|--------------------------------------------------------------------------
+*/
+
+.pag-search{
+
+	width:220px;
+
+}
+
+.pag-search-input{
+
+	width:220px !important;
+
+	height:44px !important;
+
+	padding:0 18px !important;
+
+	border:1px solid rgba(255,255,255,.18) !important;
+
+	border-radius:999px !important;
+
+	background:rgba(255,255,255,.12) !important;
+
+	color:#fff !important;
+
+	box-shadow:none !important;
+
+	outline:none !important;
+
+	backdrop-filter:blur(18px);
+
+	-webkit-backdrop-filter:blur(18px);
+
+}
+
+.pag-search-input:focus{
+
+	border-color:rgba(255,255,255,.45) !important;
+
+	box-shadow:none !important;
+
+	background:rgba(255,255,255,.18) !important;
+
+}
+
+.pag-search-input::placeholder{
+
+	color:rgba(255,255,255,.75);
+
+}
+
+.pag-header-meta{
+
+	display:flex;
+
+	gap:18px;
+
+	margin-top:18px;
+
+	font-size:13px;
+
+	color:rgba(255,255,255,.82);
+
+}
+
+.pag-header-meta span{
+
+	padding:8px 14px;
+
+	border-radius:999px;
+
+	background:rgba(255,255,255,.18);
+
+	backdrop-filter:blur(10px);
+    color: #fff !important;;
+
+}

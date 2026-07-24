@@ -19,47 +19,99 @@ class PAG_Dashboard {
 
 			<header class="pag-dashboard-header">
 
-				<div>
+    <div class="pag-dashboard-title">
 
-					<h1 class="pag-title">
-						Portfolio Access Gate
-					</h1>
+        <span class="pag-overline">
+            PORTFOLIO ACCESS GATE
+        </span>
 
-					<p class="pag-subtitle">
-						Monitor your protected portfolio performance.
-					</p>
+        <h1 class="pag-title">
+            Dashboard
+        </h1>
 
-				</div>
+        <p class="pag-subtitle">
+            Monitor your protected portfolio performance.
+        </p>
 
-			</header>
+		<div class="pag-header-meta">
+
+	<span>Welcome back 👋</span>
+
+	<span>Last Sync: Today</span>
+
+</div>
+
+    </div>
+
+	
+
+    <div class="pag-header-actions">
+
+	<div class="pag-search">
+
+		<input
+			type="search"
+			class="pag-search-input"
+			placeholder="Search leads..."
+		>
+
+	</div>
+
+	<button
+		type="button"
+		class="pag-theme-toggle"
+		aria-label="Toggle Theme"
+	>
+
+		<span class="pag-theme-icon">☀️</span>
+
+		<span class="pag-theme-switch">
+
+			<span class="pag-theme-thumb"></span>
+
+		</span>
+
+		<span class="pag-theme-icon">🌙</span>
+
+	</button>
+
+	<div class="pag-version">
+
+		v<?php echo esc_html( PAG_VERSION ); ?>
+
+	</div>
+
+</div>
+
+</header>
 
 			<section class="pag-dashboard-cards">
 
 				<?php
 
 				PAG_Dashboard_Components::card(
-					'👥',
+					PAG_Dashboard_Components::icon_users(),
 					'Total Leads',
 					$status['total'],
 					'primary'
 				);
 
 				PAG_Dashboard_Components::card(
-					'📅',
+					PAG_Dashboard_Components::icon_calendar(),
 					'Today',
 					$status['today'],
 					'success'
 				);
 
 				PAG_Dashboard_Components::card(
-					'📈',
+					PAG_Dashboard_Components::icon_chart(),
 					'Last 7 Days',
 					$status['week'],
 					'info'
 				);
 
 				PAG_Dashboard_Components::card(
-					'🏢',
+					PAG_Dashboard_Components::icon_building(),
 					'Companies',
 					PAG_Domain_Analyzer::unique_domains(),
 					'warning'
@@ -69,11 +121,11 @@ class PAG_Dashboard {
 
 			</section>
 
-			<section class="pag-section">
+			<!-- <section class="pag-section">
 
 				<?php PAG_Dashboard_Components::quick_actions(); ?>
 
-			</section>
+			</section> -->
 
 			<section class="pag-section">
 

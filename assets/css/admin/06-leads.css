@@ -1,0 +1,46 @@
+/* ===========================
+   Leads Toolbar
+=========================== */
+
+.pag-leads-toolbar{
+
+	display:flex;
+
+	align-items:center;
+
+	gap:16px;
+
+	margin-bottom:28px;
+
+}
+
+.pag-leads-toolbar input{
+
+	width:360px;
+
+	height:48px;
+
+	padding:0 18px;
+
+	border:1px solid #E5E7EB;
+
+	border-radius:14px;
+
+	background:#fff;
+
+	font-size:14px;
+
+}
+
+.pag-leads-toolbar .button{
+
+	height:48px;
+
+	padding:0 22px;
+
+	border-radius:14px;
+
+	font-weight:600;
+
+}
+

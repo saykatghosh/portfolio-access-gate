@@ -1,0 +1,77 @@
+/*
+|--------------------------------------------------------------------------
+| Portfolio Access Gate
+| Reset
+|--------------------------------------------------------------------------
+*/
+
+.pag-dashboard *,
+.pag-dashboard *::before,
+.pag-dashboard *::after{
+    box-sizing:border-box;
+}
+
+.pag-dashboard{
+
+    font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+
+    color:var(--pag-text);
+
+    background:var(--pag-bg);
+
+    min-height:100vh;
+
+    padding:24px;
+
+}
+
+.pag-dashboard h1,
+.pag-dashboard h2,
+.pag-dashboard h3,
+.pag-dashboard h4,
+.pag-dashboard h5,
+.pag-dashboard h6{
+
+    margin:0;
+
+    font-weight:700;
+
+    color:var(--pag-text);
+
+}
+
+.pag-dashboard p{
+
+    margin:0;
+
+    color:var(--pag-text-light);
+
+}
+
+.pag-dashboard a{
+
+    text-decoration:none;
+
+}
+
+.pag-dashboard img{
+
+    max-width:100%;
+
+    display:block;
+
+}
+
+.pag-dashboard button{
+
+    font-family:inherit;
+
+}
+
+.pag-dashboard input,
+.pag-dashboard select,
+.pag-dashboard textarea{
+
+    font-family:inherit;
+
+}

@@ -1,0 +1,237 @@
+/*
+|--------------------------------------------------------------------------
+| Cards
+|--------------------------------------------------------------------------
+*/
+
+.pag-box{
+
+    background:var(--pag-card);
+
+    border-radius:20px;
+
+    box-shadow:var(--pag-shadow);
+
+    border:1px solid var(--pag-border);
+
+    padding:28px;
+
+    transition:all var(--pag-transition);
+
+}
+
+.pag-box:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+
+    0 20px 45px rgba(0,0,0,.08);
+
+}
+
+/*
+|--------------------------------------------------------------------------
+| Buttons
+|--------------------------------------------------------------------------
+*/
+
+.pag-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:8px;
+
+    height:44px;
+
+    padding:0 20px;
+
+    border-radius:12px;
+
+    border:none;
+
+    cursor:pointer;
+
+    transition:all var(--pag-transition);
+
+    font-weight:600;
+
+}
+
+.pag-btn-primary{
+
+    background:var(--pag-primary);
+
+    color:#fff;
+
+}
+
+.pag-btn-primary:hover{
+
+    background:var(--pag-primary-hover);
+
+}
+
+.pag-btn-outline{
+
+    background:#fff;
+
+    color:var(--pag-primary);
+
+    border:1px solid var(--pag-border);
+
+}
+
+.pag-btn-outline:hover{
+
+    background:#f8fafc;
+
+}
+
+/*
+|--------------------------------------------------------------------------
+| Inputs
+|--------------------------------------------------------------------------
+*/
+
+.pag-input{
+
+    width:100%;
+
+    height:48px;
+
+    border-radius:14px;
+
+    border:1px solid var(--pag-border);
+
+    padding:0 18px;
+
+    outline:none;
+
+    background:#fff;
+
+    transition:all var(--pag-transition);
+
+}
+
+.pag-input:focus{
+
+    border-color:var(--pag-primary);
+
+    box-shadow:
+
+    0 0 0 4px rgba(79,70,229,.10);
+
+}
+
+/*
+|--------------------------------------------------------------------------
+| Badge
+|--------------------------------------------------------------------------
+*/
+
+.pag-badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:6px 12px;
+
+    border-radius:999px;
+
+    font-size:12px;
+
+    font-weight:600;
+
+}
+
+/*
+|--------------------------------------------------------------------------
+| Card Layout
+|--------------------------------------------------------------------------
+*/
+
+.pag-card{
+
+	display:flex;
+
+	align-items:center;
+
+	gap:18px;
+
+}
+
+.pag-card-content{
+
+	display:flex;
+
+	flex-direction:column;
+
+}
+
+.pag-card-label{
+
+	font-size:14px;
+
+	font-weight:500;
+
+	color:var(--pag-text-light);
+
+	margin-bottom:6px;
+
+}
+
+.pag-card-value{
+
+	font-size:38px;
+
+	font-weight:800;
+
+	line-height:1;
+
+	letter-spacing:-1px;
+
+}
+
+.pag-btn{
+
+	height:46px;
+
+	padding:0 20px;
+
+	border-radius:14px;
+
+	font-weight:600;
+
+	font-size:14px;
+
+}
+
+.pag-btn-primary{
+
+	box-shadow:
+
+	0 10px 20px rgba(79,70,229,.18);
+
+}
+
+.pag-btn-primary:hover{
+
+	transform:translateY(-2px);
+
+}
+
+.pag-btn-outline{
+
+	background:#fff;
+
+	border:1px solid #E5E7EB;
+
+}

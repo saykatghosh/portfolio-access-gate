@@ -6,23 +6,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class PAG_View_Lead {
 
-	public static function get( $id ) {
+	public function render() {
 
-		global $wpdb;
+		$id = isset( $_GET['id'] )
+			? absint( $_GET['id'] )
+			: 0;
 
-		$table = $wpdb->prefix . PAG_Leads_DB::TABLE;
+		echo '<div class="wrap">';
 
-		return $wpdb->get_row(
+		echo '<h1>View Lead</h1>';
 
-			$wpdb->prepare(
+		echo '<p>Lead ID: ' . esc_html( $id ) . '</p>';
 
-				"SELECT * FROM {$table} WHERE id=%d",
-
-				$id
-
-			)
-
-		);
+		echo '</div>';
 
 	}
 

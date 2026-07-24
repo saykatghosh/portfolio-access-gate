@@ -1,0 +1,168 @@
+/* ======================================================
+   LEADS PAGE
+====================================================== */
+
+.pag-toolbar{
+	display:flex;
+	align-items:center;
+	justify-content:space-between;
+	margin-bottom:28px;
+}
+
+.pag-search-form{
+	display:flex;
+	align-items:center;
+	gap:12px;
+}
+
+.pag-search-form input[type="search"]{
+
+	width:380px;
+	height:48px;
+
+	padding:0 18px;
+
+	border:1px solid #E7EAF3;
+	border-radius:14px;
+
+	background:#fff;
+
+	font-size:14px;
+
+	outline:none;
+
+	transition:.25s;
+
+}
+
+.pag-search-form input[type="search"]:focus{
+
+	border-color:#5B5FEF;
+
+	box-shadow:0 0 0 4px rgba(91,95,239,.10);
+
+}
+
+.pag-search-form .button{
+
+	height:48px;
+
+	padding:0 24px;
+
+	border-radius:14px;
+
+	font-weight:600;
+
+	background:#5B5FEF;
+
+	border:none;
+
+	color:#fff;
+
+	box-shadow:0 10px 24px rgba(91,95,239,.20);
+
+}
+
+.pag-search-form .button:hover{
+
+	background:#4C51E8;
+
+	color:#fff;
+
+}
+
+/* ===========================
+   User
+=========================== */
+
+.pag-user{
+
+	display:flex;
+
+	align-items:center;
+
+	gap:14px;
+
+}
+
+.pag-user strong{
+
+	font-size:14px;
+
+	font-weight:700;
+
+	color:#20253A;
+
+}
+
+.pag-user small{
+
+	color:#9AA4B2;
+
+	font-size:12px;
+
+}
+
+/* ===========================
+   Domain
+=========================== */
+
+.pag-domain{
+
+	color:#8B94A8;
+
+	font-size:13px;
+
+}
+
+/* ===========================
+   Email Badge
+=========================== */
+
+.pag-email-badge{
+
+	display:inline-flex;
+
+	align-items:center;
+
+	padding:7px 14px;
+
+	border-radius:999px;
+
+	font-size:12px;
+
+	font-weight:700;
+
+}
+
+.pag-email-business{
+
+	background:#EAFBF2;
+
+	color:#17B26A;
+
+}
+
+.pag-email-free{
+
+	background:#FFF5E8;
+
+	color:#F79009;
+
+}
+
+/* ===========================
+   View Button
+=========================== */
+
+.pag-table .button{
+
+	border-radius:10px;
+
+	padding:6px 16px;
+
+	font-size:13px;
+
+	font-weight:600;
+
+}

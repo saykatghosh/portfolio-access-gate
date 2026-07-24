@@ -79,6 +79,8 @@ class PAG_Plugin {
 
 			'includes/admin/class-admin-assets.php',
 
+			'includes/admin/class-view-lead.php',
+
 			/*
 |--------------------------------------------------------------------------
 | Dashboard
