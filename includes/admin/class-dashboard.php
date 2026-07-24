@@ -8,77 +8,178 @@ class PAG_Dashboard {
 
 	public function render() {
 
-		$stats = PAG_Dashboard_Analytics::stats();
-
-		$pages = PAG_Dashboard_Analytics::top_pages();
-
-		$recent = PAG_Dashboard_Analytics::recent();
+		$stats   = PAG_Dashboard_Analytics::stats();
+		$domains = PAG_Domain_Analyzer::top_domains( 5 );
+		$pages   = PAG_Dashboard_Analytics::top_pages( 5 );
+		$recent  = PAG_Dashboard_Analytics::recent( 5 );
 
 		?>
 
-		<div class="wrap">
+		<div class="wrap pag-dashboard">
 
-			<h1>Portfolio Access Gate</h1>
+			<div class="pag-dashboard-header">
 
-			<div class="pag-dashboard-cards">
+				<div>
 
-				<div class="pag-card">
+					<h1 class="pag-title">
 
-					<span>Total Leads</span>
+						Portfolio Access Gate
 
-					<h2><?php echo esc_html( $stats['total'] ); ?></h2>
+					</h1>
 
-				</div>
+					<p class="pag-subtitle">
 
-				<div class="pag-card">
+						Monitor your protected portfolio performance.
 
-					<span>Today</span>
-
-					<h2><?php echo esc_html( $stats['today'] ); ?></h2>
-
-				</div>
-
-				<div class="pag-card">
-
-					<span>Last 7 Days</span>
-
-					<h2><?php echo esc_html( $stats['week'] ); ?></h2>
-
-				</div>
-
-				<div class="pag-card">
-
-					<span>Last 30 Days</span>
-
-					<h2><?php echo esc_html( $stats['month'] ); ?></h2>
+					</p>
 
 				</div>
 
 			</div>
 
-			<div class="pag-dashboard-grid">
+			<div class="pag-dashboard-cards">
+
+				<?php
+
+				PAG_Dashboard_Components::card(
+					'👥',
+					'Total Leads',
+					$stats['total'],
+					'primary'
+				);
+
+				PAG_Dashboard_Components::card(
+					'📅',
+					'Today',
+					$stats['today'],
+					'success'
+				);
+
+				PAG_Dashboard_Components::card(
+					'📈',
+					'Last 7 Days',
+					$stats['week'],
+					'info'
+				);
+
+				PAG_Dashboard_Components::card(
+					'🏢',
+					'Companies',
+					PAG_Domain_Analyzer::unique_domains(),
+					'warning'
+				);
+
+				?>
+
+			</div>
+
+			<?php PAG_Dashboard_Components::quick_actions(); ?>
+
+			<?php PAG_Dashboard_Chart::render(); ?>
+
+			<div class="pag-grid">
 
 				<div class="pag-box">
 
-					<h2>Top Protected Pages</h2>
+					<?php
 
-					<table class="widefat striped">
+					PAG_Dashboard_Components::section(
+						'Top Company Domains',
+						'Most active business domains.'
+					);
+
+					?>
+
+					<table class="pag-table">
 
 						<thead>
 
-						<tr>
+							<tr>
 
-							<th>Page</th>
+								<th>Domain</th>
 
-							<th width="100">Leads</th>
+								<th width="90">Leads</th>
 
-						</tr>
+							</tr>
 
 						</thead>
 
 						<tbody>
 
-						<?php if ( $pages ) : ?>
+						<?php if ( ! empty( $domains ) ) : ?>
+
+							<?php foreach ( $domains as $domain ) : ?>
+
+								<tr>
+
+									<td>
+
+										<span class="pag-badge">
+
+											<?php echo esc_html( $domain->email_domain ); ?>
+
+										</span>
+
+									</td>
+
+									<td>
+
+										<?php echo esc_html( $domain->total ); ?>
+
+									</td>
+
+								</tr>
+
+							<?php endforeach; ?>
+
+						<?php else : ?>
+
+							<tr>
+
+								<td colspan="2">
+
+									No data available.
+
+								</td>
+
+							</tr>
+
+						<?php endif; ?>
+
+						</tbody>
+
+					</table>
+
+				</div>
+
+				<div class="pag-box">
+
+					<?php
+
+					PAG_Dashboard_Components::section(
+						'Top Protected Pages',
+						'Highest converting pages.'
+					);
+
+					?>
+
+					<table class="pag-table">
+
+						<thead>
+
+							<tr>
+
+								<th>Page</th>
+
+								<th width="90">Leads</th>
+
+							</tr>
+
+						</thead>
+
+						<tbody>
+
+						<?php if ( ! empty( $pages ) ) : ?>
 
 							<?php foreach ( $pages as $page ) : ?>
 
@@ -106,77 +207,7 @@ class PAG_Dashboard {
 
 								<td colspan="2">
 
-									No Data
-
-								</td>
-
-							</tr>
-
-						<?php endif; ?>
-
-						</tbody>
-
-					</table>
-
-				</div>
-
-				<div class="pag-box">
-
-					<h2>Recent Activity</h2>
-
-					<table class="widefat striped">
-
-						<thead>
-
-						<tr>
-
-							<th>Name</th>
-
-							<th>Email</th>
-
-							<th>Date</th>
-
-						</tr>
-
-						</thead>
-
-						<tbody>
-
-						<?php if ( $recent ) : ?>
-
-							<?php foreach ( $recent as $lead ) : ?>
-
-								<tr>
-
-									<td>
-
-										<?php echo esc_html( $lead->full_name ); ?>
-
-									</td>
-
-									<td>
-
-										<?php echo esc_html( $lead->email ); ?>
-
-									</td>
-
-									<td>
-
-										<?php echo esc_html( $lead->created_at ); ?>
-
-									</td>
-
-								</tr>
-
-							<?php endforeach; ?>
-
-						<?php else : ?>
-
-							<tr>
-
-								<td colspan="3">
-
-									No Activity
+									No data available.
 
 								</td>
 
@@ -192,109 +223,76 @@ class PAG_Dashboard {
 
 			</div>
 
+			<div class="pag-box">
+
+				<?php
+
+				PAG_Dashboard_Components::section(
+					'Recent Leads',
+					'Latest captured business leads.'
+				);
+
+				?>
+
+				<table class="pag-table">
+
+					<thead>
+
+						<tr>
+
+							<th>Name</th>
+
+							<th>Email</th>
+
+							<th>Page</th>
+
+							<th width="170">Date</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody>
+
+					<?php if ( ! empty( $recent ) ) : ?>
+
+						<?php foreach ( $recent as $lead ) : ?>
+
+							<tr>
+
+								<td><?php echo esc_html( $lead->full_name ); ?></td>
+
+								<td><?php echo esc_html( $lead->email ); ?></td>
+
+								<td><?php echo esc_html( $lead->page_title ); ?></td>
+
+								<td><?php echo esc_html( $lead->created_at ); ?></td>
+
+							</tr>
+
+						<?php endforeach; ?>
+
+					<?php else : ?>
+
+						<tr>
+
+							<td colspan="4">
+
+								No leads found.
+
+							</td>
+
+						</tr>
+
+					<?php endif; ?>
+
+					</tbody>
+
+				</table>
+
+			</div>
+
 		</div>
-
-		<style>
-
-		.pag-dashboard-cards{
-
-			display:grid;
-
-			grid-template-columns:repeat(4,1fr);
-
-			gap:20px;
-
-			margin:25px 0;
-
-		}
-
-		.pag-card{
-
-			background:#fff;
-
-			border:1px solid #dcdcde;
-
-			border-radius:14px;
-
-			padding:25px;
-
-		}
-
-		.pag-card span{
-
-			display:block;
-
-			color:#6b7280;
-
-			font-size:14px;
-
-		}
-
-		.pag-card h2{
-
-			margin:10px 0 0;
-
-			font-size:34px;
-
-		}
-
-		.pag-dashboard-grid{
-
-			display:grid;
-
-			grid-template-columns:1fr 1fr;
-
-			gap:25px;
-
-		}
-
-		.pag-box{
-
-			background:#fff;
-
-			border:1px solid #dcdcde;
-
-			border-radius:14px;
-
-			padding:20px;
-
-		}
-
-		.pag-box h2{
-
-			margin-top:0;
-
-			margin-bottom:18px;
-
-		}
-
-		@media(max-width:1200px){
-
-			.pag-dashboard-cards{
-
-				grid-template-columns:repeat(2,1fr);
-
-			}
-
-		}
-
-		@media(max-width:768px){
-
-			.pag-dashboard-cards{
-
-				grid-template-columns:1fr;
-
-			}
-
-			.pag-dashboard-grid{
-
-				grid-template-columns:1fr;
-
-			}
-
-		}
-
-		</style>
 
 		<?php
 

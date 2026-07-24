@@ -30,6 +30,8 @@ class PAG_Loader {
 			return;
 		}
 
+		new PAG_Admin_Assets();
+
 		new PAG_Export();
 
 		new PAG_Delete_Leads();

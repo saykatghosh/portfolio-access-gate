@@ -8,148 +8,180 @@ class PAG_Leads {
 
 	public function render() {
 
-		global $wpdb;
+		$search = isset( $_GET['s'] )
+			? sanitize_text_field( wp_unslash( $_GET['s'] ) )
+			: '';
 
-		$table = $wpdb->prefix . PAG_Leads_DB::TABLE;
+		$page = isset( $_GET['paged'] )
+			? max( 1, absint( $_GET['paged'] ) )
+			: 1;
 
-		$results = $wpdb->get_results(
-			"SELECT * FROM {$table} ORDER BY id DESC"
+		$per_page = 20;
+
+		$rows = PAG_Leads_Table::get_data(
+			$search,
+			$page,
+			$per_page
 		);
+
+		$total = PAG_Leads_Table::total( $search );
+
+		$total_pages = (int) ceil( $total / $per_page );
 
 		?>
 
-		<div class="wrap">
+		<div class="wrap pag-dashboard">
 
-			<h1 class="wp-heading-inline">Leads</h1>
+			<?php PAG_Leads_Toolbar::render(); ?>
 
-			<form method="post"
-				action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>"
-				style="float:right;margin-bottom:20px;">
+			<div class="pag-box">
 
-				<?php wp_nonce_field( 'pag_export_csv' ); ?>
+				<div class="pag-toolbar">
 
-				<input type="hidden" name="action" value="pag_export_csv">
+					<form
+						method="get"
+						class="pag-search-form">
 
-				<input type="submit"
-					class="button button-primary"
-					value="Export CSV">
+						<input
+							type="hidden"
+							name="page"
+							value="pag-leads">
 
-			</form>
+						<input
+							type="search"
+							name="s"
+							value="<?php echo esc_attr( $search ); ?>"
+							placeholder="Search by name, email or page...">
 
-			<div style="clear:both;"></div>
+						<button
+							type="submit"
+							class="button">
 
-			<form
-				method="post"
-				action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
+							Search
 
-				<?php wp_nonce_field( 'pag_bulk_delete' ); ?>
+						</button>
 
-				<input
-					type="hidden"
-					name="action"
-					value="pag_bulk_delete">
+					</form>
 
-				<p>
+				</div>
 
-					<input
-						type="submit"
-						class="button button-secondary"
-						value="Delete Selected"
-
-						onclick="return confirm('Delete selected leads?');">
-
-				</p>
-
-				<table class="widefat striped">
+				<table class="pag-table">
 
 					<thead>
 
-					<tr>
+						<tr>
 
-						<th width="40">
+							<th>Name</th>
 
-							<input
-								type="checkbox"
-								id="pag-select-all">
+							<th>Email</th>
 
-						</th>
+							<th>Type</th>
 
-						<th>ID</th>
-						<th>Name</th>
-						<th>Email</th>
-						<th>Domain</th>
-						<th>Page</th>
-						<th>IP</th>
-						<th>Date</th>
-						<th width="170">Action</th>
+							<th>Page</th>
 
-					</tr>
+							<th>Date</th>
+
+							<th width="90">Action</th>
+
+						</tr>
 
 					</thead>
 
 					<tbody>
 
-					<?php if ( $results ) : ?>
+					<?php if ( ! empty( $rows ) ) : ?>
 
-						<?php foreach ( $results as $lead ) : ?>
+						<?php foreach ( $rows as $lead ) : ?>
 
 							<tr>
 
 								<td>
 
-									<input
-										type="checkbox"
-										name="lead_ids[]"
-										value="<?php echo esc_attr( $lead->id ); ?>">
+									<div class="pag-user">
+
+										<?php
+										PAG_Leads_Components::avatar(
+											$lead->full_name
+										);
+										?>
+
+										<div>
+
+											<strong>
+
+												<?php echo esc_html( $lead->full_name ); ?>
+
+											</strong>
+
+											<br>
+
+											<small>
+
+												ID #<?php echo esc_html( $lead->id ); ?>
+
+											</small>
+
+										</div>
+
+									</div>
 
 								</td>
 
-								<td><?php echo esc_html( $lead->id ); ?></td>
-								<td><?php echo esc_html( $lead->full_name ); ?></td>
-								<td><?php echo esc_html( $lead->email ); ?></td>
-								<td><?php echo esc_html( $lead->email_domain ); ?></td>
-								<td><?php echo esc_html( $lead->page_title ); ?></td>
-								<td><?php echo esc_html( $lead->ip_address ); ?></td>
-								<td><?php echo esc_html( $lead->created_at ); ?></td>
+								<td>
+
+									<div>
+
+										<strong>
+
+											<?php echo esc_html( $lead->email ); ?>
+
+										</strong>
+
+										<br>
+
+										<span class="pag-domain">
+
+											<?php echo esc_html( $lead->email_domain ); ?>
+
+										</span>
+
+									</div>
+
+								</td>
 
 								<td>
 
+									<?php
+									PAG_Leads_Components::email_badge(
+										$lead->email_domain
+									);
+									?>
+
+								</td>
+
+								<td>
+
+									<?php echo esc_html( $lead->page_title ); ?>
+
+								</td>
+
+								<td>
+
+									<?php echo esc_html( $lead->created_at ); ?>
+
+								</td>
+
+								<td>
 
 									<a
-
 										class="button button-small"
-
 										href="<?php echo esc_url(
-
 											admin_url(
-
-												'admin.php?page=pag-leads&view=' . $lead->id
-
+												'admin.php?page=pag-view-lead&id=' . absint( $lead->id )
 											)
-
 										); ?>">
 
 										View
-
-									</a>
-
-									&nbsp;
-
-									<a
-										class="button button-small button-link-delete"
-
-										onclick="return confirm('Delete this lead?');"
-
-										href="<?php echo esc_url(
-											wp_nonce_url(
-												admin_url(
-													'admin-post.php?action=pag_delete_lead&lead_id=' . $lead->id
-												),
-												'pag_delete_lead'
-											)
-										); ?>">
-
-										Delete
 
 									</a>
 
@@ -163,9 +195,9 @@ class PAG_Leads {
 
 						<tr>
 
-							<td colspan="9">
+							<td colspan="6">
 
-								No Leads Found.
+								No leads found.
 
 							</td>
 
@@ -177,98 +209,52 @@ class PAG_Leads {
 
 				</table>
 
-						<?php
+				<?php if ( $total_pages > 1 ) : ?>
 
-						if ( isset( $_GET['view'] ) ) :
+					<div class="tablenav">
 
-							$item = PAG_View_Lead::get(
+						<div class="tablenav-pages">
 
-								absint( $_GET['view'] )
+							<?php
+
+							echo wp_kses_post(
+
+								paginate_links(
+
+									array(
+
+										'base'      => add_query_arg(
+											'paged',
+											'%#%'
+										),
+
+										'format'    => '',
+
+										'current'   => $page,
+
+										'total'     => $total_pages,
+
+										'prev_text' => '&laquo;',
+
+										'next_text' => '&raquo;',
+
+									)
+
+								)
 
 							);
 
-							if ( $item ) :
+							?>
 
-						?>
+						</div>
 
-						<hr>
+					</div>
 
-						<h2>Lead Details</h2>
+				<?php endif; ?>
 
-						<table class="widefat striped">
-
-						<tr>
-						<th width="220">Full Name</th>
-						<td><?php echo esc_html( $item->full_name ); ?></td>
-						</tr>
-
-						<tr>
-						<th>Email</th>
-						<td><?php echo esc_html( $item->email ); ?></td>
-						</tr>
-
-						<tr>
-						<th>Domain</th>
-						<td><?php echo esc_html( $item->email_domain ); ?></td>
-						</tr>
-
-						<tr>
-						<th>Page</th>
-						<td><?php echo esc_html( $item->page_title ); ?></td>
-						</tr>
-
-						<tr>
-						<th>IP Address</th>
-						<td><?php echo esc_html( $item->ip_address ); ?></td>
-						</tr>
-
-						<tr>
-						<th>User Agent</th>
-						<td><?php echo esc_html( $item->user_agent ); ?></td>
-						</tr>
-
-						<tr>
-						<th>Created</th>
-						<td><?php echo esc_html( $item->created_at ); ?></td>
-						</tr>
-
-						</table>
-
-						<?php
-
-							endif;
-
-						endif;
-
-						?>
-
-			</form>
+			</div>
 
 		</div>
-
-		<script>
-
-		document.addEventListener("DOMContentLoaded",function(){
-
-			const all=document.getElementById("pag-select-all");
-
-			if(!all){
-				return;
-			}
-
-			all.addEventListener("change",function(){
-
-				document.querySelectorAll("input[name='lead_ids[]']").forEach(function(item){
-
-					item.checked=all.checked;
-
-				});
-
-			});
-
-		});
-
-		</script>
 
 		<?php
 

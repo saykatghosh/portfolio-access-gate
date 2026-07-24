@@ -6,18 +6,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class PAG_Plugin {
 
-	/**
-	 * Constructor.
-	 */
 	public function __construct() {
 
 		$this->load_dependencies();
 
 	}
 
-	/**
-	 * Load all plugin dependencies.
-	 */
 	private function load_dependencies() {
 
 		$files = array(
@@ -29,10 +23,14 @@ class PAG_Plugin {
 
 			// Security
 			'includes/security/class-rate-limiter.php',
+			'includes/security/class-honeypot.php',
+			'includes/security/class-session.php',
 
 			// Helpers
 			'includes/helpers/class-cookie.php',
 			'includes/helpers/class-email-validator.php',
+			'includes/helpers/class-domain-analyzer.php',
+			'includes/helpers/class-company-intelligence.php',
 
 			// Database
 			'includes/database/class-leads-db.php',
@@ -43,11 +41,27 @@ class PAG_Plugin {
 			// Frontend
 			'includes/frontend/class-gate.php',
 
-			// Admin
-			'includes/admin/class-dashboard.php',
+			// Admin Assets
+			'includes/admin/class-admin-assets.php',
+
+			// Dashboard
+			'includes/admin/class-dashboard-components.php',
+			'includes/admin/class-dashboard-chart.php',
+			'includes/admin/class-dashboard-status.php',
 			'includes/admin/class-dashboard-analytics.php',
-			'includes/admin/class-protected-pages.php',
+			'includes/admin/class-chart-data.php',
+			'includes/admin/class-dashboard.php',
+
+			// Leads
+			// Leads
+			'includes/admin/class-leads-toolbar.php',
+			'includes/admin/class-leads-components.php',
+			'includes/admin/class-leads-table.php',
 			'includes/admin/class-leads.php',
+			
+
+			// Other Admin
+			'includes/admin/class-protected-pages.php',
 			'includes/admin/class-export.php',
 			'includes/admin/class-delete-leads.php',
 			'includes/admin/class-bulk-delete.php',
@@ -61,16 +75,15 @@ class PAG_Plugin {
 			$file = PAG_PLUGIN_PATH . $file;
 
 			if ( file_exists( $file ) ) {
+
 				require_once $file;
+
 			}
 
 		}
 
 	}
 
-	/**
-	 * Start plugin.
-	 */
 	public function run() {
 
 		PAG_Hooks::init();

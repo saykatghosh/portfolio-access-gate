@@ -40,6 +40,7 @@ require_once PAG_PLUGIN_PATH . 'includes/admin/class-dashboard-analytics.php';
 require_once PAG_PLUGIN_PATH . 'includes/security/class-rate-limiter.php';
 require_once PAG_PLUGIN_PATH . 'includes/security/class-honeypot.php';
 require_once PAG_PLUGIN_PATH . 'includes/security/class-session.php';
+require_once PAG_PLUGIN_PATH . 'includes/admin/class-chart-data.php';
 
 /*
 |--------------------------------------------------------------------------

@@ -4,39 +4,85 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class PAG_Dashboard_Stats {
+class PAG_Dashboard_Status {
 
-	public static function get() {
+	/**
+	 * Render system status.
+	 */
+	public static function render() {
 
-		global $wpdb;
+		?>
 
-		$table = $wpdb->prefix . PAG_Leads_DB::TABLE;
+		<div class="pag-box">
 
-		$total_leads = (int) $wpdb->get_var(
-			"SELECT COUNT(*) FROM {$table}"
-		);
+			<?php
 
-		$today_leads = (int) $wpdb->get_var(
-			"SELECT COUNT(*) FROM {$table}
-			WHERE DATE(created_at)=CURDATE()"
-		);
+			PAG_Dashboard_Components::section(
+				'System Status',
+				'Current plugin health.'
+			);
 
-		$total_pages = count(
-			get_option(
-				'pag_protected_pages',
-				array()
-			)
-		);
+			?>
 
-		return array(
+			<table class="pag-table">
 
-			'total_leads' => $total_leads,
+				<tbody>
 
-			'today_leads' => $today_leads,
+					<tr>
 
-			'protected_pages' => $total_pages,
+						<td>Plugin</td>
 
-		);
+						<td><span class="pag-badge">Active</span></td>
+
+					</tr>
+
+					<tr>
+
+						<td>Database</td>
+
+						<td><span class="pag-badge">Connected</span></td>
+
+					</tr>
+
+					<tr>
+
+						<td>Security</td>
+
+						<td><span class="pag-badge">Enabled</span></td>
+
+					</tr>
+
+					<tr>
+
+						<td>Cookie</td>
+
+						<td><span class="pag-badge">Enabled</span></td>
+
+					</tr>
+
+					<tr>
+
+						<td>AJAX</td>
+
+						<td><span class="pag-badge">Working</span></td>
+
+					</tr>
+
+					<tr>
+
+						<td>Version</td>
+
+						<td><strong><?php echo esc_html( PAG_VERSION ); ?></strong></td>
+
+					</tr>
+
+				</tbody>
+
+			</table>
+
+		</div>
+
+		<?php
 
 	}
 
