@@ -1,0 +1,90 @@
+/*
+|--------------------------------------------------------------------------
+| Base
+|--------------------------------------------------------------------------
+*/
+
+:root{
+
+	--pag-primary:#6366f1;
+	--pag-primary-dark:#4f46e5;
+
+	--pag-success:#22c55e;
+	--pag-warning:#f59e0b;
+	--pag-danger:#ef4444;
+	--pag-info:#0ea5e9;
+
+	--pag-bg:#f6f8fc;
+
+	--pag-card:#ffffff;
+
+	--pag-title:#111827;
+
+	--pag-text:#6b7280;
+
+	--pag-border:#e5e7eb;
+
+	--pag-radius:18px;
+
+	--pag-shadow:
+		0 10px 30px rgba(15,23,42,.08);
+
+	--pag-transition:.25s;
+
+}
+
+*{
+
+	box-sizing:border-box;
+
+}
+
+.wrap.pag-dashboard{
+
+	background:var(--pag-bg);
+
+	padding:24px;
+
+	min-height:100vh;
+
+}
+
+.pag-title{
+
+	margin:0;
+
+	font-size:32px;
+
+	font-weight:700;
+
+	line-height:1.2;
+
+	color:var(--pag-title);
+
+}
+
+.pag-subtitle{
+
+	margin:8px 0 0;
+
+	font-size:15px;
+
+	color:var(--pag-text);
+
+}
+
+.pag-box{
+
+	background:var(--pag-card);
+
+	border:1px solid var(--pag-border);
+
+	border-radius:var(--pag-radius);
+
+	box-shadow:var(--pag-shadow);
+
+	padding:24px;
+
+	margin-bottom:24px;
+
+}

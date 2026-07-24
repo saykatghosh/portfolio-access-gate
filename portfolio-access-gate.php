@@ -29,22 +29,22 @@ define( 'PAG_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 
 /*
 |--------------------------------------------------------------------------
-| Core
+| Core Bootstrap
 |--------------------------------------------------------------------------
+|
+| Only the core bootstrap files are loaded here.
+| All other plugin dependencies are loaded by
+| includes/core/class-plugin.php
+|
 */
 
 require_once PAG_PLUGIN_PATH . 'includes/core/class-activator.php';
 require_once PAG_PLUGIN_PATH . 'includes/core/class-deactivator.php';
 require_once PAG_PLUGIN_PATH . 'includes/core/class-plugin.php';
-require_once PAG_PLUGIN_PATH . 'includes/admin/class-dashboard-analytics.php';
-require_once PAG_PLUGIN_PATH . 'includes/security/class-rate-limiter.php';
-require_once PAG_PLUGIN_PATH . 'includes/security/class-honeypot.php';
-require_once PAG_PLUGIN_PATH . 'includes/security/class-session.php';
-require_once PAG_PLUGIN_PATH . 'includes/admin/class-chart-data.php';
 
 /*
 |--------------------------------------------------------------------------
-| Activation
+| Activation / Deactivation
 |--------------------------------------------------------------------------
 */
 
@@ -73,6 +73,7 @@ register_deactivation_hook(
 function pag_boot() {
 
 	$plugin = new PAG_Plugin();
+
 	$plugin->run();
 
 }

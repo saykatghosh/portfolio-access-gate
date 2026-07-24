@@ -16,51 +16,100 @@ class PAG_Plugin {
 
 		$files = array(
 
-			// Core
+			/*
+			|--------------------------------------------------------------------------
+			| Core
+			|--------------------------------------------------------------------------
+			*/
+
 			'includes/core/class-hooks.php',
 			'includes/core/class-settings-manager.php',
 			'includes/core/class-loader.php',
 
-			// Security
+			/*
+			|--------------------------------------------------------------------------
+			| Security
+			|--------------------------------------------------------------------------
+			*/
+
 			'includes/security/class-rate-limiter.php',
 			'includes/security/class-honeypot.php',
 			'includes/security/class-session.php',
 
-			// Helpers
+			/*
+			|--------------------------------------------------------------------------
+			| Helpers
+			|--------------------------------------------------------------------------
+			*/
+
 			'includes/helpers/class-cookie.php',
 			'includes/helpers/class-email-validator.php',
 			'includes/helpers/class-domain-analyzer.php',
 			'includes/helpers/class-company-intelligence.php',
 
-			// Database
+			/*
+			|--------------------------------------------------------------------------
+			| Database
+			|--------------------------------------------------------------------------
+			*/
+
 			'includes/database/class-leads-db.php',
 
-			// AJAX
+			/*
+			|--------------------------------------------------------------------------
+			| AJAX
+			|--------------------------------------------------------------------------
+			*/
+
 			'includes/ajax/class-submit.php',
 
-			// Frontend
+			/*
+			|--------------------------------------------------------------------------
+			| Frontend
+			|--------------------------------------------------------------------------
+			*/
+
 			'includes/frontend/class-gate.php',
 
-			// Admin Assets
+			/*
+			|--------------------------------------------------------------------------
+			| Admin Assets
+			|--------------------------------------------------------------------------
+			*/
+
 			'includes/admin/class-admin-assets.php',
 
-			// Dashboard
-			'includes/admin/class-dashboard-components.php',
-			'includes/admin/class-dashboard-chart.php',
-			'includes/admin/class-dashboard-status.php',
-			'includes/admin/class-dashboard-analytics.php',
+			/*
+|--------------------------------------------------------------------------
+| Dashboard
+|--------------------------------------------------------------------------
+*/
+
+			'includes/admin/dashboard/class-dashboard-components.php',
+			'includes/admin/dashboard/class-dashboard-analytics.php',
+			'includes/admin/dashboard/class-dashboard-chart.php',
+			'includes/admin/dashboard/class-dashboard-status.php',
+			'includes/admin/dashboard/class-dashboard.php',
+
 			'includes/admin/class-chart-data.php',
-			'includes/admin/class-dashboard.php',
 
-			// Leads
-			// Leads
-			'includes/admin/class-leads-toolbar.php',
-			'includes/admin/class-leads-components.php',
-			'includes/admin/class-leads-table.php',
-			'includes/admin/class-leads.php',
-			
+			/*
+|--------------------------------------------------------------------------
+| Leads
+|--------------------------------------------------------------------------
+*/
 
-			// Other Admin
+'includes/admin/leads/class-leads-components.php',
+'includes/admin/leads/class-leads-toolbar.php',
+'includes/admin/leads/class-leads-table.php',
+'includes/admin/leads/class-leads.php',
+
+			/*
+			|--------------------------------------------------------------------------
+			| Other Admin
+			|--------------------------------------------------------------------------
+			*/
+
 			'includes/admin/class-protected-pages.php',
 			'includes/admin/class-export.php',
 			'includes/admin/class-delete-leads.php',
