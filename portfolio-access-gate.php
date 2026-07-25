@@ -1,13 +1,15 @@
 <?php
 /**
  * Plugin Name: Portfolio Access Gate
- * Plugin URI: https://github.com/yourcompany/portfolio-access-gate
- * Description: Protect selected WordPress pages with business email verification.
- * Version: 0.3.0
+ * Plugin URI: https://github.com/saykatghosh/pottfolio-access-gate
+ * Description: Protect WordPress pages with business email verification, secure lead capture, and professional access management.
+ * Version: 1.0.0
  * Requires at least: 6.5
  * Requires PHP: 8.0
- * Author: Your Company
- * License: GPL-2.0+
+ * Author: Saykat Ghosh
+ * Author URI: https://saykatghosh.com/
+ * License: GPL-2.0-or-later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: portfolio-access-gate
  */
 
@@ -21,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 |--------------------------------------------------------------------------
 */
 
-define( 'PAG_VERSION', '0.3.0' );
+define( 'PAG_VERSION', '1.0.0' );
 define( 'PAG_PLUGIN_FILE', __FILE__ );
 define( 'PAG_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 define( 'PAG_PLUGIN_URL', plugin_dir_url( __FILE__ ) );

@@ -43,41 +43,41 @@ class PAG_Admin_Assets {
 			null
 		);
 
-		if ( file_exists( PAG_PLUGIN_PATH . 'assets/css/popup-builder.css' ) ) {
+// 		if ( file_exists( PAG_PLUGIN_PATH . 'assets/css/popup-builder.css' ) ) {
 
-			wp_enqueue_style(
+// 			wp_enqueue_style(
 
-				'pag-popup-builder',
+// 				'pag-popup-builder',
 
-				PAG_PLUGIN_URL . 'assets/css/popup-builder.css',
+// 				PAG_PLUGIN_URL . 'assets/css/popup-builder.css',
 
-				array(),
+// 				array(),
 
-				PAG_VERSION
+// 				PAG_VERSION
 
-			);
+// 			);
 
-}
+// }
 
-if ( file_exists( PAG_PLUGIN_PATH . 'assets/js/popup-builder.js' ) ) {
+// if ( file_exists( PAG_PLUGIN_PATH . 'assets/js/popup-builder.js' ) ) {
 
-	wp_enqueue_media();
+// 	wp_enqueue_media();
 
-	wp_enqueue_script(
+// 	wp_enqueue_script(
 
-		'pag-popup-builder',
+// 		'pag-popup-builder',
 
-		PAG_PLUGIN_URL . 'assets/js/popup-builder.js',
+// 		PAG_PLUGIN_URL . 'assets/js/popup-builder.js',
 
-		array( 'jquery' ),
+// 		array( 'jquery' ),
 
-		PAG_VERSION,
+// 		PAG_VERSION,
 
-		true
+// 		true
 
-	);
+// 	);
 
-}
+// }
 
 		/*
 		|--------------------------------------------------------------------------
