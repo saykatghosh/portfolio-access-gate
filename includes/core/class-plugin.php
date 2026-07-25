@@ -25,6 +25,7 @@ class PAG_Plugin {
 			'includes/core/class-hooks.php',
 			'includes/core/class-settings-manager.php',
 			'includes/core/class-loader.php',
+			'includes/core/class-popup-settings.php',
 
 			/*
 			|--------------------------------------------------------------------------
@@ -62,7 +63,7 @@ class PAG_Plugin {
 			*/
 
 			'includes/ajax/class-submit.php',
-
+			'includes/ajax/class-popup-save.php',
 			/*
 			|--------------------------------------------------------------------------
 			| Frontend
@@ -96,15 +97,15 @@ class PAG_Plugin {
 			'includes/admin/class-chart-data.php',
 
 			/*
-|--------------------------------------------------------------------------
-| Leads
-|--------------------------------------------------------------------------
-*/
+			|--------------------------------------------------------------------------
+			| Leads
+			|--------------------------------------------------------------------------
+			*/
 
-'includes/admin/leads/class-leads-components.php',
-'includes/admin/leads/class-leads-toolbar.php',
-'includes/admin/leads/class-leads-table.php',
-'includes/admin/leads/class-leads.php',
+			'includes/admin/leads/class-leads-components.php',
+			'includes/admin/leads/class-leads-toolbar.php',
+			'includes/admin/leads/class-leads-table.php',
+			'includes/admin/leads/class-leads.php',
 
 			/*
 			|--------------------------------------------------------------------------
@@ -116,6 +117,7 @@ class PAG_Plugin {
 			'includes/admin/class-export.php',
 			'includes/admin/class-delete-leads.php',
 			'includes/admin/class-bulk-delete.php',
+			'includes/admin/class-popup-builder.php',
 			'includes/admin/class-settings.php',
 
 		);

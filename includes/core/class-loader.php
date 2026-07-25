@@ -61,6 +61,7 @@ class PAG_Loader {
 	private function load_ajax() {
 
 		new PAG_Submit();
+		new PAG_Popup_Save();
 
 	}
 
@@ -101,6 +102,15 @@ class PAG_Loader {
 			'manage_options',
 			'pag-leads',
 			array( $this, 'leads' )
+		);
+
+		add_submenu_page(
+			'portfolio-access-gate',
+			'Popup Builder',
+			'Popup Builder',
+			'manage_options',
+			'pag-popup-builder',
+			array( $this, 'popup_builder' )
 		);
 
 		add_submenu_page(
@@ -165,6 +175,12 @@ class PAG_Loader {
 	public function settings() {
 
 		$page = new PAG_Settings();
+		$page->render();
+
+	}
+	public function popup_builder() {
+
+		$page = new PAG_Popup_Builder();
 		$page->render();
 
 	}

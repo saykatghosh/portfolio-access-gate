@@ -43,6 +43,40 @@ class PAG_Admin_Assets {
 			null
 		);
 
+		if ( file_exists( PAG_PLUGIN_PATH . 'assets/css/popup-builder.css' ) ) {
+
+			wp_enqueue_style(
+
+				'pag-popup-builder',
+
+				PAG_PLUGIN_URL . 'assets/css/popup-builder.css',
+
+				array(),
+
+				PAG_VERSION
+
+			);
+
+}
+
+if ( file_exists( PAG_PLUGIN_PATH . 'assets/js/popup-builder.js' ) ) {
+
+	wp_enqueue_script(
+
+		'pag-popup-builder',
+
+		PAG_PLUGIN_URL . 'assets/js/popup-builder.js',
+
+		array(),
+
+		PAG_VERSION,
+
+		true
+
+	);
+
+}
+
 		/*
 		|--------------------------------------------------------------------------
 		| Design System
@@ -78,6 +112,8 @@ class PAG_Admin_Assets {
 			);
 
 		}
+
+
 
 		/*
 		|--------------------------------------------------------------------------
