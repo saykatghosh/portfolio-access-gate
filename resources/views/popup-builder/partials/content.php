@@ -81,6 +81,13 @@ $options = PAG_Popup_Settings::get();
 
 		</div>
 
+		<?php
+		include __DIR__ . '/logo.php';
+		?>
+		<?php
+		include __DIR__ . '/background.php';
+		?>
+
 	</div>
 
 </section>

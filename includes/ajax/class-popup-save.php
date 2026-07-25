@@ -45,6 +45,13 @@ class PAG_Popup_Save {
 		$options['button_text'] = sanitize_text_field(
 			wp_unslash( $_POST['button'] ?? '' )
 		);
+		$options['logo'] = esc_url_raw(
+		wp_unslash( $_POST['logo'] ?? '' )
+	);
+
+	$options['background'] = esc_url_raw(
+	wp_unslash( $_POST['background'] ?? '' )
+);
 
 		PAG_Popup_Settings::save( $options );
 

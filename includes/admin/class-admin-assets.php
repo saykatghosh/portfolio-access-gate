@@ -61,13 +61,15 @@ class PAG_Admin_Assets {
 
 if ( file_exists( PAG_PLUGIN_PATH . 'assets/js/popup-builder.js' ) ) {
 
+	wp_enqueue_media();
+
 	wp_enqueue_script(
 
 		'pag-popup-builder',
 
 		PAG_PLUGIN_URL . 'assets/js/popup-builder.js',
 
-		array(),
+		array( 'jquery' ),
 
 		PAG_VERSION,
 

@@ -16,34 +16,88 @@
 
 	</div>
 
-	<div class="pag-preview-box">
+	<?php if ( ! empty( $options['logo'] ) ) : ?>
 
-		<h3>
+	<img
+		id="pag-preview-logo"
+		src="<?php echo esc_url( $options['logo'] ); ?>"
+		alt="Logo">
 
-			Unlock Portfolio
+<?php else : ?>
 
-		</h3>
+	<img
+		id="pag-preview-logo"
+		src=""
+		alt="Logo"
+		style="display:none;">
 
-		<p>
+<?php endif; ?>
 
-			Business Access Required
+	<div
+	class="pag-preview-box"
+	id="pag-preview-box"
 
-		</p>
+	<?php if ( ! empty( $options['background'] ) ) : ?>
 
-		<input
-			type="text"
-			placeholder="Full Name">
+		style="
+			background-image:url('<?php echo esc_url( $options['background'] ); ?>');
+			background-size:cover;
+			background-position:center;
+		"
 
-		<input
-			type="email"
-			placeholder="Business Email">
+	<?php endif; ?>
 
-		<button>
+>
 
-			Access Portfolio
+	<?php if ( ! empty( $options['logo'] ) ) : ?>
 
-		</button>
+		<img
+			id="pag-preview-logo"
+			src="<?php echo esc_url( $options['logo'] ); ?>"
+			alt="Logo">
 
-	</div>
+	<?php else : ?>
+
+		<img
+			id="pag-preview-logo"
+			src=""
+			alt="Logo"
+			style="display:none;">
+
+	<?php endif; ?>
+
+	<h3>
+
+		<?php echo esc_html( $options['title'] ); ?>
+
+	</h3>
+
+	<p>
+
+		<?php echo esc_html( $options['subtitle'] ); ?>
+
+	</p>
+
+	<p class="pag-preview-description">
+
+		<?php echo esc_html( $options['description'] ); ?>
+
+	</p>
+
+	<input
+		type="text"
+		placeholder="Full Name">
+
+	<input
+		type="email"
+		placeholder="Business Email">
+
+	<button>
+
+		<?php echo esc_html( $options['button_text'] ); ?>
+
+	</button>
+
+</div>
 
 </aside>

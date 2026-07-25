@@ -52,6 +52,7 @@ class PAG_Popup_Settings {
 			*/
 
 			'logo'              => '',
+			'background' => '',
 			'background_image'  => '',
 
 			/*

@@ -274,3 +274,17 @@
 	min-height:120px;
 
 }
+
+#pag-preview-logo{
+
+	max-width:120px;
+
+	max-height:80px;
+
+	display:block;
+
+	margin:0 auto 20px;
+
+	object-fit:contain;
+
+}
