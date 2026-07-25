@@ -26,8 +26,8 @@ class PAG_Leads_DB {
 			page_id BIGINT UNSIGNED NOT NULL,
 			page_title VARCHAR(255) NOT NULL,
 			created_at DATETIME NOT NULL,
-			PRIMARY KEY  (id)
-			KEY email (email)
+			PRIMARY KEY  (id),
+			KEY email (email),
 			KEY page_id (page_id)
 
 		) {$charset};";
