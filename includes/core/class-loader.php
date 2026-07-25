@@ -45,6 +45,7 @@ class PAG_Loader {
 				'register_admin_menu',
 			)
 		);
+	
 
 	}
 
@@ -104,14 +105,14 @@ class PAG_Loader {
 			array( $this, 'leads' )
 		);
 
-		add_submenu_page(
-			'portfolio-access-gate',
-			'Popup Builder',
-			'Popup Builder',
-			'manage_options',
-			'pag-popup-builder',
-			array( $this, 'popup_builder' )
-		);
+		// add_submenu_page(
+		// 	'portfolio-access-gate',
+		// 	'Popup Builder',
+		// 	'Popup Builder',
+		// 	'manage_options',
+		// 	'pag-popup-builder',
+		// 	array( $this, 'popup_builder' )
+		// );
 
 		add_submenu_page(
 			'portfolio-access-gate',
@@ -122,14 +123,14 @@ class PAG_Loader {
 			array( $this, 'settings' )
 		);
 
-		add_submenu_page(
-			'portfolio-access-gate',
-			'Tools',
-			'Tools',
-			'manage_options',
-			'pag-tools',
-			array( $this, 'coming_soon' )
-		);
+		// add_submenu_page(
+		// 	'portfolio-access-gate',
+		// 	'Tools',
+		// 	'Tools',
+		// 	'manage_options',
+		// 	'pag-tools',
+		// 	array( $this, 'coming_soon' )
+		// );
 		add_submenu_page(
 
 	null,
@@ -178,18 +179,18 @@ class PAG_Loader {
 		$page->render();
 
 	}
-	public function popup_builder() {
+	// public function popup_builder() {
 
-		$page = new PAG_Popup_Builder();
-		$page->render();
+	// 	$page = new PAG_Popup_Builder();
+	// 	$page->render();
 
-	}
+	// }
 
-	public function coming_soon() {
+	// public function coming_soon() {
 
-		echo '<div class="wrap"><h1>Coming Soon</h1><p>Under Development</p></div>';
+	// 	echo '<div class="wrap"><h1>Coming Soon</h1><p>Under Development</p></div>';
 
-	}
+	// }
 	public function view_lead() {
 
 	$page = new PAG_View_Lead();

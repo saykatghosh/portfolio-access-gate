@@ -148,40 +148,79 @@ if ( file_exists( PAG_PLUGIN_PATH . 'assets/js/popup-builder.js' ) ) {
 		}
 
 		/*
-		|--------------------------------------------------------------------------
-		| Scripts
-		|--------------------------------------------------------------------------
-		*/
+|--------------------------------------------------------------------------
+| Scripts
+|--------------------------------------------------------------------------
+*/
 
-		wp_enqueue_script(
+if (
+	'portfolio-access-gate_page_pag-protected-pages' === $hook &&
+	file_exists( PAG_PLUGIN_PATH . 'assets/js/protected-pages.js' )
+) {
 
-			'pag-admin',
+	wp_enqueue_script(
 
-			PAG_PLUGIN_URL . 'assets/js/admin.js',
+		'pag-protected-pages',
 
-			array(),
+		PAG_PLUGIN_URL . 'assets/js/protected-pages.js',
 
-			PAG_VERSION,
+		array(),
 
-			true
+		PAG_VERSION,
 
-		);
+		true
 
-		wp_localize_script(
+	);
 
-			'pag-admin',
+}
 
-			'pagAdmin',
+if ( file_exists( PAG_PLUGIN_PATH . 'assets/js/theme.js' ) ) {
 
-			array(
+	wp_enqueue_script(
 
-				'ajax_url' => admin_url( 'admin-ajax.php' ),
+		'pag-theme',
 
-				'nonce'    => wp_create_nonce( 'pag_admin' ),
+		PAG_PLUGIN_URL . 'assets/js/theme.js',
 
-			)
+		array(),
 
-		);
+		PAG_VERSION,
+
+		true
+
+	);
+
+}
+
+wp_enqueue_script(
+
+	'pag-admin',
+
+	PAG_PLUGIN_URL . 'assets/js/admin.js',
+
+	array(),
+
+	PAG_VERSION,
+
+	true
+
+);
+
+wp_localize_script(
+
+	'pag-admin',
+
+	'pagAdmin',
+
+	array(
+
+		'ajax_url' => admin_url( 'admin-ajax.php' ),
+
+		'nonce' => wp_create_nonce( 'pag_admin' ),
+
+	)
+
+);
 
 	}
 

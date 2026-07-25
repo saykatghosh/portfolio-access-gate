@@ -7,6 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 class PAG_Leads {
 
 	public function render() {
+		
 
 		$search = isset( $_GET['s'] )
 			? sanitize_text_field( wp_unslash( $_GET['s'] ) )
@@ -32,7 +33,61 @@ class PAG_Leads {
 
 		<div class="wrap pag-dashboard">
 
-			<?php PAG_Leads_Toolbar::render(); ?>
+			<div class="pag-dashboard-header">
+
+	<div class="pag-dashboard-title">
+
+		<span class="pag-overline">
+
+			PORTFOLIO ACCESS GATE
+
+		</span>
+
+		<h1 class="pag-title">
+
+			Leads
+
+		</h1>
+
+		<p class="pag-subtitle">
+
+			View and manage captured business leads.
+
+		</p>
+
+		<div class="pag-header-meta">
+
+			<span>
+
+				Total Leads:
+				<?php echo esc_html( number_format_i18n( $total ) ); ?>
+
+			</span>
+
+			<span>
+
+				Page
+				<?php echo esc_html( $page ); ?>
+				of
+				<?php echo esc_html( max( 1, $total_pages ) ); ?>
+
+			</span>
+
+		</div>
+
+	</div>
+
+	<div class="pag-header-actions">
+
+		<div class="pag-version">
+
+			v<?php echo esc_html( PAG_VERSION ); ?>
+
+		</div>
+
+	</div>
+
+</div>
 
 			<div class="pag-box">
 
@@ -71,6 +126,14 @@ class PAG_Leads {
 
 						<tr>
 
+							<th width="50">
+
+								<input
+									type="checkbox"
+									id="pag-select-all">
+
+							</th>
+
 							<th>Name</th>
 
 							<th>Email</th>
@@ -91,107 +154,137 @@ class PAG_Leads {
 
 					<?php if ( ! empty( $rows ) ) : ?>
 
-						<?php foreach ( $rows as $lead ) : ?>
+	<?php foreach ( $rows as $lead ) : ?>
 
-							<tr>
+		<tr>
 
-								<td>
+			<td>
 
-									<div class="pag-user">
+				<input
+					type="checkbox"
+					class="pag-lead-checkbox"
+					name="lead_ids[]"
+					value="<?php echo esc_attr( $lead->id ); ?>">
 
-										<?php
-										PAG_Leads_Components::avatar(
-											$lead->full_name
-										);
-										?>
+			</td>
 
-										<div>
+			<td>
 
-											<strong>
+				<div class="pag-user">
 
-												<?php echo esc_html( $lead->full_name ); ?>
+					<?php
+					PAG_Leads_Components::avatar(
+						$lead->full_name
+					);
+					?>
 
-											</strong>
+					<div>
 
-											<br>
+						<strong>
 
-											<small>
+							<?php echo esc_html( $lead->full_name ); ?>
 
-												ID #<?php echo esc_html( $lead->id ); ?>
+						</strong>
 
-											</small>
+						<br>
 
-										</div>
+						<small>
 
-									</div>
+							ID #<?php echo esc_html( $lead->id ); ?>
 
-								</td>
+						</small>
 
-								<td>
+					</div>
 
-									<div>
+				</div>
 
-										<strong>
+			</td>
 
-											<?php echo esc_html( $lead->email ); ?>
+			<td>
 
-										</strong>
+				<div>
 
-										<br>
+					<strong>
 
-										<span class="pag-domain">
+						<?php echo esc_html( $lead->email ); ?>
 
-											<?php echo esc_html( $lead->email_domain ); ?>
+					</strong>
 
-										</span>
+					<br>
 
-									</div>
+					<span class="pag-domain">
 
-								</td>
+						<?php echo esc_html( $lead->email_domain ); ?>
 
-								<td>
+					</span>
 
-									<?php
-									PAG_Leads_Components::email_badge(
-										$lead->email_domain
-									);
-									?>
+				</div>
 
-								</td>
+			</td>
 
-								<td>
+			<td>
 
-									<?php echo esc_html( $lead->page_title ); ?>
+				<?php
+				PAG_Leads_Components::email_badge(
+					$lead->email_domain
+				);
+				?>
 
-								</td>
+			</td>
 
-								<td>
+			<td>
 
-									<?php echo esc_html( $lead->created_at ); ?>
+				<?php echo esc_html( $lead->page_title ); ?>
 
-								</td>
+			</td>
 
-								<td>
+			<td>
 
-									<a
-										class="button button-small"
-										href="<?php echo esc_url(
-											admin_url(
-												'admin.php?page=pag-view-lead&id=' . absint( $lead->id )
-											)
-										); ?>">
+				<?php echo esc_html( $lead->created_at ); ?>
 
-										View
+			</td>
 
-									</a>
+			<td>
 
-								</td>
+	<div class="pag-row-actions">
 
-							</tr>
+		<a
+			class="button button-small"
+			href="<?php echo esc_url(
+				admin_url(
+					'admin.php?page=pag-view-lead&id=' . absint( $lead->id )
+				)
+			); ?>">
 
-						<?php endforeach; ?>
+			View
 
-					<?php else : ?>
+		</a>
+
+		<a
+			class="button button-small button-link-delete"
+			onclick="return confirm('Delete this lead?');"
+			href="<?php echo esc_url(
+				wp_nonce_url(
+					admin_url(
+						'admin-post.php?action=pag_delete_lead&lead_id=' . absint( $lead->id )
+					),
+					'pag_delete_lead'
+				)
+			); ?>">
+
+			Delete
+
+		</a>
+
+	</div>
+
+</td>
+
+		</tr>
+
+	<?php endforeach; ?>
+
+<?php else : ?>
 
 						<tr>
 

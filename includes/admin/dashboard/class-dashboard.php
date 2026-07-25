@@ -43,37 +43,9 @@ class PAG_Dashboard {
 
     </div>
 
-	
 
-    <div class="pag-header-actions">
 
-	<div class="pag-search">
-
-		<input
-			type="search"
-			class="pag-search-input"
-			placeholder="Search leads..."
-		>
-
-	</div>
-
-	<button
-		type="button"
-		class="pag-theme-toggle"
-		aria-label="Toggle Theme"
-	>
-
-		<span class="pag-theme-icon">☀️</span>
-
-		<span class="pag-theme-switch">
-
-			<span class="pag-theme-thumb"></span>
-
-		</span>
-
-		<span class="pag-theme-icon">🌙</span>
-
-	</button>
+<div class="pag-header-actions">
 
 	<div class="pag-version">
 
@@ -121,11 +93,6 @@ class PAG_Dashboard {
 
 			</section>
 
-			<!-- <section class="pag-section">
-
-				<?php PAG_Dashboard_Components::quick_actions(); ?>
-
-			</section> -->
 
 			<section class="pag-section">
 

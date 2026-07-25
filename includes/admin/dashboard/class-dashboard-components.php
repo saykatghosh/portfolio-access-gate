@@ -35,11 +35,15 @@ class PAG_Dashboard_Components {
 			<div class="pag-card-content">
 
 				<span class="pag-card-label">
+
 					<?php echo esc_html( $title ); ?>
+
 				</span>
 
 				<h2 class="pag-card-value">
+
 					<?php echo esc_html( number_format_i18n( $value ) ); ?>
+
 				</h2>
 
 			</div>
@@ -93,29 +97,10 @@ class PAG_Dashboard_Components {
 	}
 
 	/**
-	 * Button.
+	 * Icons
 	 */
-	public static function button( $label, $url, $type = 'primary' ) {
 
-		$class = ( 'primary' === $type )
-			? 'pag-btn pag-btn-primary'
-			: 'pag-btn pag-btn-outline';
-
-		?>
-
-		<a
-			href="<?php echo esc_url( $url ); ?>"
-			class="<?php echo esc_attr( $class ); ?>"
-		>
-
-			<?php echo esc_html( $label ); ?>
-
-		</a>
-
-		<?php
-	}
-
-		public static function icon_users() {
+	public static function icon_users() {
 
 		return '
 		<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -158,54 +143,6 @@ class PAG_Dashboard_Components {
 			<path d="M8 6h.01M12 6h.01M16 6h.01M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01"/>
 		</svg>';
 
-	}
-
-	/**
-	 * Quick Actions.
-	 */
-	public static function quick_actions() {
-		?>
-
-		<div class="pag-box">
-
-			<?php
-
-			self::section(
-				'Quick Actions',
-				'Frequently used actions.'
-			);
-
-			?>
-
-			<div class="pag-actions">
-
-				<?php
-
-				self::button(
-					'Protected Pages',
-					admin_url( 'admin.php?page=pag-protected-pages' ),
-					'primary'
-				);
-
-				self::button(
-					'View Leads',
-					admin_url( 'admin.php?page=pag-leads' ),
-					'outline'
-				);
-
-				self::button(
-					'Settings',
-					admin_url( 'admin.php?page=pag-settings' ),
-					'outline'
-				);
-
-				?>
-
-			</div>
-
-		</div>
-
-		<?php
 	}
 
 }
