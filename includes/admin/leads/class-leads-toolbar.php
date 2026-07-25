@@ -6,6 +6,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class PAG_Leads_Toolbar {
 
+	/**
+	 * Render leads toolbar.
+	 */
 	public static function render() {
 
 		?>
@@ -14,17 +17,20 @@ class PAG_Leads_Toolbar {
 
 			<div class="pag-toolbar">
 
-				<div>
+				<div class="pag-toolbar-content">
 
 					<h2>
 
-						Leads
+						<?php esc_html_e( 'Leads', 'portfolio-access-gate' ); ?>
 
 					</h2>
 
 					<p>
 
-						Manage captured business leads.
+						<?php esc_html_e(
+							'Manage captured business leads.',
+							'portfolio-access-gate'
+						); ?>
 
 					</p>
 
@@ -34,28 +40,49 @@ class PAG_Leads_Toolbar {
 
 					<a
 						href="<?php echo esc_url( admin_url( 'admin.php?page=pag-settings' ) ); ?>"
-						class="button">
+						class="button"
+					>
 
-						Settings
+						<?php esc_html_e(
+							'Settings',
+							'portfolio-access-gate'
+						); ?>
 
 					</a>
 
 					<form
 						method="post"
-						action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
+						action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>"
+					>
 
-						<?php wp_nonce_field( 'pag_export_csv' ); ?>
+						<?php
+
+						wp_nonce_field(
+							'pag_export_csv',
+							'pag_export_nonce'
+						);
+
+						?>
 
 						<input
 							type="hidden"
 							name="action"
-							value="pag_export_csv">
+							value="pag_export_csv"
+						>
 
 						<button
 							type="submit"
-							class="button button-primary">
+							class="button button-primary"
+							aria-label="<?php esc_attr_e(
+								'Export leads as CSV',
+								'portfolio-access-gate'
+							); ?>"
+						>
 
-							Export CSV
+							<?php esc_html_e(
+								'Export CSV',
+								'portfolio-access-gate'
+							); ?>
 
 						</button>
 

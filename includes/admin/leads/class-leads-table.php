@@ -9,17 +9,27 @@ class PAG_Leads_Table {
 	/**
 	 * Get paginated leads.
 	 */
-	public static function get_data( $search = '', $page = 1, $per_page = 20 ) {
+	public static function get_data(
+		$search = '',
+		$page = 1,
+		$per_page = 20
+	) {
 
 		global $wpdb;
 
 		$table = $wpdb->prefix . PAG_Leads_DB::TABLE;
 
+		$search = sanitize_text_field( $search );
+
+		$page = max( 1, absint( $page ) );
+
+		$per_page = max( 1, absint( $per_page ) );
+
 		$where = '';
 
 		$args = array();
 
-		if ( ! empty( $search ) ) {
+		if ( '' !== $search ) {
 
 			$where = "
 				WHERE
@@ -59,15 +69,19 @@ class PAG_Leads_Table {
 	}
 
 	/**
-	 * Total rows.
+	 * Get total leads.
 	 */
-	public static function total( $search = '' ) {
+	public static function total(
+		$search = ''
+	) {
 
 		global $wpdb;
 
 		$table = $wpdb->prefix . PAG_Leads_DB::TABLE;
 
-		if ( empty( $search ) ) {
+		$search = sanitize_text_field( $search );
+
+		if ( '' === $search ) {
 
 			return (int) $wpdb->get_var(
 				"SELECT COUNT(*) FROM {$table}"

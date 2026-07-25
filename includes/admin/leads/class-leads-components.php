@@ -13,8 +13,8 @@ class PAG_Leads_Components {
 
 		$name = trim( (string) $name );
 
-		if ( empty( $name ) ) {
-			$name = 'User';
+		if ( '' === $name ) {
+			$name = esc_html__( 'User', 'portfolio-access-gate' );
 		}
 
 		$parts = preg_split( '/\s+/', $name );
@@ -30,9 +30,13 @@ class PAG_Leads_Components {
 		}
 
 		?>
+
 		<div class="pag-avatar">
+
 			<?php echo esc_html( $initials ); ?>
+
 		</div>
+
 		<?php
 	}
 
@@ -40,6 +44,8 @@ class PAG_Leads_Components {
 	 * Render email type badge.
 	 */
 	public static function email_badge( $domain ) {
+
+		$domain = strtolower( sanitize_text_field( $domain ) );
 
 		$free_domains = array(
 			'gmail.com',
@@ -54,35 +60,57 @@ class PAG_Leads_Components {
 		);
 
 		$is_business = ! in_array(
-			strtolower( $domain ),
+			$domain,
 			$free_domains,
 			true
 		);
 
-		?>
-		<span class="pag-badge <?php echo $is_business ? 'pag-business' : 'pag-free'; ?>">
+		$badge_class = $is_business
+			? 'pag-business'
+			: 'pag-free';
 
-			<?php echo esc_html( $is_business ? 'Business' : 'Free' ); ?>
+		?>
+
+		<span class="pag-badge <?php echo esc_attr( $badge_class ); ?>">
+
+			<?php
+
+			echo esc_html(
+				$is_business
+					? __( 'Business', 'portfolio-access-gate' )
+					: __( 'Free', 'portfolio-access-gate' )
+			);
+
+			?>
 
 		</span>
+
 		<?php
 	}
 
 	/**
 	 * Render empty state.
 	 */
-	public static function empty_state( $message = 'No leads found.' ) {
+	public static function empty_state(
+		$message = ''
+	) {
+
+		if ( '' === $message ) {
+			$message = __( 'No leads found.', 'portfolio-access-gate' );
+		}
 
 		?>
+
 		<tr>
 
-			<td colspan="6" style="text-align:center;padding:40px;">
+			<td colspan="6" class="pag-empty-state">
 
 				<?php echo esc_html( $message ); ?>
 
 			</td>
 
 		</tr>
+
 		<?php
 	}
 
