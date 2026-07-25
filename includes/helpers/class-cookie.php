@@ -13,15 +13,27 @@ class PAG_Cookie {
 	 */
 	private static function lifetime() {
 
-		$options = PAG_Settings_Manager::get();
+	$options = PAG_Settings_Manager::get();
 
-		$hours = ! empty( $options['cookie_hours'] )
-			? absint( $options['cookie_hours'] )
-			: 24;
+	$hours = isset( $options['cookie_hours'] )
+		? absint( $options['cookie_hours'] )
+		: 24;
 
-		return $hours * HOUR_IN_SECONDS;
+	$minutes = isset( $options['cookie_minutes'] )
+		? absint( $options['cookie_minutes'] )
+		: 0;
 
+	$seconds =
+		( $hours * HOUR_IN_SECONDS ) +
+		( $minutes * MINUTE_IN_SECONDS );
+
+	if ( $seconds < MINUTE_IN_SECONDS ) {
+		$seconds = MINUTE_IN_SECONDS;
 	}
+
+	return $seconds;
+
+}
 
 	/**
 	 * Check access.

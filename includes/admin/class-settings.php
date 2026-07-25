@@ -23,6 +23,9 @@ class PAG_Settings {
 				settings_fields( 'pag_settings_group' );
 
 				?>
+				<?php settings_errors(); ?>
+
+				
 
 				<div class="pag-settings-wrap">
 
@@ -34,20 +37,49 @@ class PAG_Settings {
 
 							<tr>
 
-								<th>Cookie Duration (Hours)</th>
+	<th>Cookie Duration</th>
 
-								<td>
+	<td>
 
-									<input
-										type="number"
-										min="1"
-										max="720"
-										name="<?php echo esc_attr( PAG_Settings_Manager::OPTION_NAME ); ?>[cookie_hours]"
-										value="<?php echo esc_attr( $options['cookie_hours'] ); ?>">
+		<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
 
-								</td>
+			<div>
 
-							</tr>
+				<input
+					type="number"
+					min="0"
+					max="720"
+					style="width:90px;"
+					name="<?php echo esc_attr( PAG_Settings_Manager::OPTION_NAME ); ?>[cookie_hours]"
+					value="<?php echo esc_attr( $options['cookie_hours'] ); ?>">
+
+				<p class="description">Hours</p>
+
+			</div>
+
+			<div>
+
+				<input
+					type="number"
+					min="0"
+					max="59"
+					style="width:90px;"
+					name="<?php echo esc_attr( PAG_Settings_Manager::OPTION_NAME ); ?>[cookie_minutes]"
+					value="<?php echo esc_attr( $options['cookie_minutes'] ?? 0 ); ?>">
+
+				<p class="description">Minutes</p>
+
+			</div>
+
+		</div>
+
+		<p class="description">
+			Set how long visitors can access protected pages after verification.
+		</p>
+
+	</td>
+
+</tr>
 
 							<tr>
 
