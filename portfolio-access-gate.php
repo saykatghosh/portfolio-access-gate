@@ -1,9 +1,9 @@
 <?php
 /**
  * Plugin Name: Portfolio Access Gate
- * Plugin URI: https://github.com/saykatghosh/pottfolio-access-gate
+ * Plugin URI: https://github.com/saykatghosh/portfolio-access-gate
  * Description: Protect WordPress pages with business email verification, secure lead capture, and professional access management.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Requires at least: 6.5
  * Requires PHP: 8.0
  * Author: Saykat Ghosh
@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 |--------------------------------------------------------------------------
 */
 
-define( 'PAG_VERSION', '1.0.0' );
+define( 'PAG_VERSION', '1.0.1' );
 define( 'PAG_PLUGIN_FILE', __FILE__ );
 define( 'PAG_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 define( 'PAG_PLUGIN_URL', plugin_dir_url( __FILE__ ) );

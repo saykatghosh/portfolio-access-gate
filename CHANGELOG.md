@@ -7,6 +7,14 @@ Versioning follows Semantic Versioning (SemVer).
 
 ---
 
+## 1.0.1
+
+- Added GitHub auto update support.
+- Improved plugin architecture.
+- General improvements and bug fixes.
+
+
+
 ## [1.0.0] - 2026-07-26
 
 ### 🎉 Initial Stable Release
