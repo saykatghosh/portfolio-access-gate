@@ -43,6 +43,8 @@ define( 'PAG_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 require_once PAG_PLUGIN_PATH . 'includes/core/class-activator.php';
 require_once PAG_PLUGIN_PATH . 'includes/core/class-deactivator.php';
 require_once PAG_PLUGIN_PATH . 'includes/core/class-plugin.php';
+require_once PAG_PLUGIN_PATH . 'vendor/plugin-update-checker/plugin-update-checker.php';
+
 
 /*
 |--------------------------------------------------------------------------

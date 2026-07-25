@@ -25,6 +25,7 @@ class PAG_Plugin {
 			'includes/core/class-hooks.php',
 			'includes/core/class-settings-manager.php',
 			'includes/core/class-loader.php',
+			'includes/core/class-update-checker.php',
 			'includes/core/class-popup-settings.php',
 
 			/*
@@ -139,6 +140,8 @@ class PAG_Plugin {
 	public function run() {
 
 		PAG_Hooks::init();
+		
+		PAG_Update_Checker::init();
 
 		$loader = new PAG_Loader();
 
