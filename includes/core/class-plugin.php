@@ -116,7 +116,6 @@ class PAG_Plugin {
 			'includes/admin/class-export.php',
 			'includes/admin/class-delete-leads.php',
 			'includes/admin/class-bulk-delete.php',
-			'includes/admin/class-view-lead.php',
 			'includes/admin/class-settings.php',
 
 		);

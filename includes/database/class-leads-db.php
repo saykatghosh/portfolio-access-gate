@@ -17,29 +17,17 @@ class PAG_Leads_DB {
 		$charset = $wpdb->get_charset_collate();
 
 		$sql = "CREATE TABLE {$table} (
-
 			id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-
 			full_name VARCHAR(255) NOT NULL,
-
 			email VARCHAR(255) NOT NULL,
-
 			email_domain VARCHAR(255) NOT NULL,
-
 			ip_address VARCHAR(100) NOT NULL,
-
 			user_agent TEXT NULL,
-
 			page_id BIGINT UNSIGNED NOT NULL,
-
 			page_title VARCHAR(255) NOT NULL,
-
 			created_at DATETIME NOT NULL,
-
-			PRIMARY KEY (id),
-
-			KEY email (email),
-
+			PRIMARY KEY  (id)
+			KEY email (email)
 			KEY page_id (page_id)
 
 		) {$charset};";
